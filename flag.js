@@ -1,29 +1,36 @@
 #!/usr/bin/env node
+const {bgRed: red, bgWhite: white, bgBlue: blue} = require('chalk');
 
-const red = string => `\u001b[41m${string}\u001b[49m`
-const white = string => `\u001b[47m${string}\u001b[49m`
-const blue = string => `\u001b[44m${string}\u001b[49m`
+let fiftySpace = thirtyFiveSpace = " ";
 
-let shortRowOne = (`${blue(" * * * * * * * ")}${red("                                   ")}`);
-let shortRowTwo = (`${blue("  * * * * * *  ")}${white("                                   ")}`);
-let longRowOne = (`${white("                                                  ")}`);
-let longRowTwo = (`${red("                                                  ")}`);
+for (i=0; i<49; i++) {
+  fiftySpace += fiftySpace[i];
+};
 
-let star = (String.fromCharCode(0x2606));
+for (i=0; i<34; i++) {
+  thirtyFiveSpace += thirtyFiveSpace[i];
+};
+
+let shortStringOne = " * * * * * * * ";
+let shortStringTwo = "  * * * * * *  ";
+
+let shortRowOne = (`${blue(shortStringOne)}${red(thirtyFiveSpace)}`);
+let shortRowTwo = (`${blue(shortStringTwo)}${white(thirtyFiveSpace)}`);
+let longRowOne = (`${white(fiftySpace)}`);
+let longRowTwo = (`${red(fiftySpace)}`);
+
+let star = (String.fromCharCode(9733));
 let rep = /\*/gi;
 shortRowOne = shortRowOne.replace(rep, star);
 shortRowTwo = shortRowTwo.replace(rep, star);
 
+for (i=0; i<3; i++) {
+  console.log(shortRowOne);
+  console.log(shortRowTwo);
+};
 console.log(shortRowOne);
-console.log(shortRowTwo);
-console.log(shortRowOne);
-console.log(shortRowTwo);
-console.log(shortRowOne);
-console.log(shortRowTwo);
-console.log(shortRowOne);
-console.log(longRowOne);
-console.log(longRowTwo);
-console.log(longRowOne);
-console.log(longRowTwo);
-console.log(longRowOne);
-console.log(longRowTwo);
+
+for (i=0; i<3; i++) {
+  console.log(longRowOne);
+  console.log(longRowTwo);
+};
